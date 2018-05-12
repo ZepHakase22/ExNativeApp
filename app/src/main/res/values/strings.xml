@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ExNativeApp</string>
+    <string name="say_hello">Say Hello</string>
+    <string name="buon_giorno">Buon Giorno</string>
 </resources>
