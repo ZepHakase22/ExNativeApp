@@ -1,4 +1,4 @@
-package com.sensoriainc.mylibrary;
+package com.sensoriainc.sensoriasignalprocessing;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
