@@ -1,6 +1,8 @@
 package com.sensoriainc.exnativeapp;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -46,5 +48,18 @@ public class MainActivity extends AppCompatActivity {
     public void sayHello(View view) {
         setEvent();
 
+    }
+
+    public SignalProcessing connectSignalProcessing(Context context, SignalProcessingCallback callback) {
+        return connectSignalProcessing(context,callback,null);
+    }
+
+    public SignalProcessing connectSignalProcessing(Context context, SignalProcessingCallback callback, Handler handler) {
+        if(callback==null) {
+            throw new NullPointerException("callback is null");
+        }
+        SignalProcessing signalProcessing=new SignalProcessing(context);
+        signalProcessing.connect(callback,handler);
+        return signalProcessing;
     }
 }

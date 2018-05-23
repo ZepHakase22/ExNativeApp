@@ -11,6 +11,24 @@
 extern "C" {
 #endif //__cplusplus
 
+JNIEXPORT void JNICALL Java_com_sensoriainc_exnativeapp_SignalProcessingService_classInitCallbackNative(
+        JNIEnv *env,jobject instance);
+
+/**
+ * Class:       SignalProcessingService
+ * Method:      cleanupNative
+ * Signature:   ()V;
+ */
+JNIEXPORT jboolean JNICALL Java_com_sensoriainc_exnativeapp_SignalProcessingService_cleanupNative(
+        JNIEnv *env, jobject instance);
+/**
+ * Class:       SignalProcessingService
+ * Method:      signalProcessingRegisterAppNative
+ * Signature:   (JJ)V;
+ */
+JNIEXPORT void JNICALL Java_com_sensoriainc_exnativeapp_SignalProcessingService_signalProcessingRegisterAppNative(
+        JNIEnv *env, jobject instance, jlong app_uuid_lsb, jlong app_uuid_msb);
+
 /**
  * Class:       MainActivity
  * Method:      stringFromJNI

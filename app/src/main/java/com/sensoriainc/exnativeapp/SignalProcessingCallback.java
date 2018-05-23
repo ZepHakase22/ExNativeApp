@@ -1,4 +1,5 @@
 package com.sensoriainc.exnativeapp;
 
-public interface SignalProcessingCallback {
+public abstract class SignalProcessingCallback {
+    void onConnectionStateChange(SignalProcessing signalProcessing, int status, int newState) {}
 }
