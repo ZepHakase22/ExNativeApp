@@ -12,6 +12,7 @@ android {
         externalNativeBuild {
             cmake {
                 cppFlags "-frtti -fexceptions"
+                cppFlags.add("-I${project.rootDir}/SensoriaSignalProcessing/src/main/cpp/Sensoria/SignalProcessing/JNI".toString())
             }
         }
     }

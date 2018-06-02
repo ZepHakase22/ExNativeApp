@@ -3,9 +3,13 @@
 #include "native-lib.h"
 #include "hello.h"
 #include "Utils.h"
+#include "Java2SignalProcessingInterface.h"
 
 static const Utils *utils=NULL;
-static const SignalProcessingInterface spIf=NULL;
+
+using namespace Sensoria::SignalProcessing::JNI;
+
+static const Java2SignalProcessingInterface *spi=NULL;
 
 JNIEXPORT void JNICALL
 Java_com_sensoriainc_exnativeapp_SignalProcessingService_classInitCallbackNative(
@@ -20,7 +24,7 @@ Java_com_sensoriainc_exnativeapp_SignalProcessingService_cleanupNative(
 
 }
 JNIEXPORT void JNICALL
-Java_com_sensoriainc_exnativeapp_SignalProcessingService_signalProcessingRegisterAppNative(
+Java_com_sensoriainc_exnativeapp_SignalProcessingService_gaitRegisterAppNative(
         JNIEnv *env, jobject instance, jlong app_uuid_lsb, jlong app_uuid_msb) {
 
     if(utils==NULL)
@@ -29,7 +33,10 @@ Java_com_sensoriainc_exnativeapp_SignalProcessingService_signalProcessingRegiste
     sp_uuid_t uuid;
 
     utils->set_uuid(uuid.uu,app_uuid_lsb,app_uuid_msb);
-    sSignalProcessing->client->register_client(&uuid);
+    if(spi==NULL) {
+        spi=new Java2SignalProcessingInterface();
+    }
+    spi->register_client(&uuid, SIGNALPROCESSING_PROFILE_GAIT_ID);
 
 }
 

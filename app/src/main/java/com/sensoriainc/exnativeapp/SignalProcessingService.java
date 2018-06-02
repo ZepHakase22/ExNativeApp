@@ -189,7 +189,7 @@ public class SignalProcessingService extends GenericService {
         Log.d(TAG, "registerClient() - UUID=" + uuid);
 
         mClientMap.put(uuid,callback);
-        signalProcessingRegisterAppNative(uuid.getLeastSignificantBits(),uuid.getMostSignificantBits());
+        gaitRegisterAppNative(uuid.getLeastSignificantBits(),uuid.getMostSignificantBits());
     }
 
     void unregisterClient(int clientIf) {

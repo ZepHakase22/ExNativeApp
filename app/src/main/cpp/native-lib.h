@@ -26,7 +26,7 @@ JNIEXPORT jboolean JNICALL Java_com_sensoriainc_exnativeapp_SignalProcessingServ
  * Method:      signalProcessingRegisterAppNative
  * Signature:   (JJ)V;
  */
-JNIEXPORT void JNICALL Java_com_sensoriainc_exnativeapp_SignalProcessingService_signalProcessingRegisterAppNative(
+JNIEXPORT void JNICALL Java_com_sensoriainc_exnativeapp_SignalProcessingService_gaitRegisterAppNative(
         JNIEnv *env, jobject instance, jlong app_uuid_lsb, jlong app_uuid_msb);
 
 /**
