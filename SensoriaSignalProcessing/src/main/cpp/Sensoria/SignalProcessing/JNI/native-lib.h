@@ -10,7 +10,7 @@
 extern "C" {
 #endif //__cplusplus
 
-JNIEXPORT void JNICALL Java_com_sensoriainc_exnativeapp_SignalProcessingService_classInitCallbackNative(
+JNIEXPORT void JNICALL Java_com_sensoriainc_sensoriasignalprocessing_GaitService_gaitInitCallbackNative(
         JNIEnv *env,jobject instance);
 
 /**
@@ -18,14 +18,14 @@ JNIEXPORT void JNICALL Java_com_sensoriainc_exnativeapp_SignalProcessingService_
  * Method:      cleanupNative
  * Signature:   ()V;
  */
-JNIEXPORT jboolean JNICALL Java_com_sensoriainc_exnativeapp_SignalProcessingService_cleanupNative(
+JNIEXPORT jboolean JNICALL Java_com_sensoriainc_sensoriasignalprocessing_GaitService_cleanupNative(
         JNIEnv *env, jobject instance);
 /**
  * Class:       SignalProcessingService
  * Method:      signalProcessingRegisterAppNative
  * Signature:   (JJ)V;
  */
-JNIEXPORT void JNICALL Java_com_sensoriainc_exnativeapp_SignalProcessingService_gaitRegisterAppNative(
+JNIEXPORT void JNICALL Java_com_sensoriainc_sensoriasignalprocessing_GaitService_gaitRegisterAppNative(
         JNIEnv *env, jobject instance, jlong app_uuid_lsb, jlong app_uuid_msb);
 
 

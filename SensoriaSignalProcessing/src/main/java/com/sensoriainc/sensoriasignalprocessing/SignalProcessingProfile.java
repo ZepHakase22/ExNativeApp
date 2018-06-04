@@ -1,4 +1,4 @@
-package com.sensoriainc.exnativeapp;
+package com.sensoriainc.sensoriasignalprocessing;
 
 public interface SignalProcessingProfile {
     /** The profile is in disconnected state */

@@ -11,19 +11,21 @@ using namespace Sensoria::SignalProcessing::JNI;
 static const Java2SignalProcessingInterface *spi=NULL;
 
 JNIEXPORT void JNICALL
-Java_com_sensoriainc_exnativeapp_SignalProcessingService_classInitCallbackNative(
+Java_com_sensoriainc_sensoriasignalprocessing_GaitService_gaitInitCallbackNative(
         JNIEnv *env,jobject instance) {
 
+    jmethodID method_onClientRegistered=
+            env->GetMethodID(instance,"onClientRegistered","(IIJJV");
 
 }
 JNIEXPORT jboolean JNICALL
-Java_com_sensoriainc_exnativeapp_SignalProcessingService_cleanupNative(
+Java_com_sensoriainc_sensoriasignalprocessing_GaitService_cleanupNative(
         JNIEnv *env, jobject instance) {
 
 
 }
 JNIEXPORT void JNICALL
-Java_com_sensoriainc_exnativeapp_SignalProcessingService_gaitRegisterAppNative(
+Java_com_sensoriainc_sensoriasignalprocessing_GaitService_gaitRegisterAppNative(
         JNIEnv *env, jobject instance, jlong app_uuid_lsb, jlong app_uuid_msb) {
 
     if(utils==NULL)

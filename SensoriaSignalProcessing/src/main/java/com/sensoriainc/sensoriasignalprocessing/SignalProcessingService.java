@@ -15,10 +15,10 @@ public abstract class SignalProcessingService extends Service {
     public static final String BLUETOOTH_ADMIN_PERM =
             android.Manifest.permission.BLUETOOTH_ADMIN;
 
-    protected IGenericServiceBinder mBinder;
-    protected abstract IGenericServiceBinder initBinder();
+    protected ISignalProcessingServiceBinder mBinder;
+    protected abstract ISignalProcessingServiceBinder initBinder();
 
-    public static interface IGenericServiceBinder extends IBinder {
+    public static interface ISignalProcessingServiceBinder extends IBinder {
         public boolean cleanup();
     }
 

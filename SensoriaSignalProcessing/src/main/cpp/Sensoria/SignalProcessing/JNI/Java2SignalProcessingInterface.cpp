@@ -9,6 +9,8 @@
 using namespace Sensoria::SignalProcessing::JNI;
 using namespace std;
 
+static const sSignalInterface
+
 void Java2SignalProcessingInterface::register_client(sp_uuid_t *uuid,
                                                      const string &signalProcessingProfileID) const {
     map<sp_uuid_t, SignalProcessing>

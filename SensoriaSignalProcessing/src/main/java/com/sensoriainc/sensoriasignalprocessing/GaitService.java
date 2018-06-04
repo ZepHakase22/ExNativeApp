@@ -20,21 +20,21 @@ import java.util.UUID;
 
 public class GaitService extends SignalProcessingService {
 
-    private native void signalProcessingRegisterAppNative(long app_uuid_lsb, long app_uuid_msb);
+    private native void gaitRegisterAppNative(long app_uuid_lsb, long app_uuid_msb);
     private native boolean cleanupNative();
-    private static native void classInitCallbackNative();
+    private static native void gaitInitCallbackNative();
     private static final String TAG="SignalProcessingService";
 
-    HashMap<UUID,ISignalProcessingCallback> mClientMap=new HashMap<>();
+    HashMap<UUID,IGaitSignalProcessingCallback> mClientMap=new HashMap<>();
 
 
     static {
-        classInitCallbackNative();
+        gaitInitCallbackNative();
     }
 
     @Override
-    protected IGenericServiceBinder initBinder() {
-        return new SignalProcessingBinder(this);
+    protected ISignalProcessingServiceBinder initBinder() {
+        return new GaitSignalProcessingBinder(this);
     }
 
     @Override
@@ -102,10 +102,10 @@ public class GaitService extends SignalProcessingService {
         }
     }
 
-    private static class SignalProcessingBinder extends ISignalProcessing.Stub implements IGenericServiceBinder {
-        private SignalProcessingService mService;
+    private static class GaitSignalProcessingBinder extends IGaitSignalProcessing.Stub implements ISignalProcessingServiceBinder {
+        private GaitService mService;
 
-        public SignalProcessingBinder(SignalProcessingService svc) {
+        public GaitSignalProcessingBinder(GaitService svc) {
             mService=svc;
         }
 
@@ -116,15 +116,15 @@ public class GaitService extends SignalProcessingService {
             return true;
         }
 
-        private SignalProcessingService getService() {
+        private GaitService getService() {
             if (mService != null && mService.isAvailable()) return mService;
             Log.e(TAG, "getService() - Service requested but not available");
             return null;
         }
 
         @Override
-        public void registerClient(ParcelUuid uuid, ISignalProcessingCallback callback) {
-            SignalProcessingService service=getService();
+        public void registerClient(ParcelUuid uuid, IGaitSignalProcessingCallback callback) {
+            GaitService service=getService();
             if (service == null) return;
             service.registerClient(uuid.getUuid(), callback);
         }
@@ -157,37 +157,10 @@ public class GaitService extends SignalProcessingService {
             service.registerForNotification(clientIf, handle, enable);
         }
 
-        @Override
-        public void registerServer(ParcelUuid uuid, ISignalProcessingServerCallback callback) {
-            SignalProcessingService service=getService();
-            if (service == null) return;
-            service.registerServer(uuid.getUuid(), callback);
-        }
-
-        @Override
-        public void unregisterServer(int serverIf) {
-            SignalProcessingService service=getService();
-            if (service == null) return;
-            service.unregisterServer(serverIf);
-        }
-
-        @Override
-        public void serverConnect(int serverIf) {
-            SignalProcessingService service=getService();
-            if (service == null) return;
-            service.serverConnect(serverIf);
-        }
-
-        @Override
-        public void serverDisconnect(int serverIf) {
-            SignalProcessingService service=getService();
-            if (service == null) return;
-            service.serverDisconnect(serverIf);
-        }
     };
 
 
-    void registerClient(UUID uuid, ISignalProcessingCallback callback) {
+    void registerClient(UUID uuid, IGaitSignalProcessingCallback callback) {
         Log.d(TAG, "registerClient() - UUID=" + uuid);
 
         mClientMap.put(uuid,callback);

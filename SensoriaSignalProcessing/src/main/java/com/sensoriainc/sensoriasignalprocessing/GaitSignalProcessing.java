@@ -12,7 +12,7 @@ import android.util.Log;
 
 import java.util.UUID;
 
-public class GaitSignalProcessing {
+public class GaitSignalProcessing implements SignalProcessingProfile{
     private static final String TAG="SignalProcessing";
     private int mConnState;
     private final Object mStateLock = new Object();
@@ -50,7 +50,7 @@ public class GaitSignalProcessing {
         Intent callService=new Intent(context,SignalProcessingService.class);
         context.bindService(callService,mServiceConnection,Context.BIND_AUTO_CREATE);
     }
-    SignalProcessing(Context context) {
+    GaitSignalProcessing(Context context) {
         mConnState = CONN_STATE_IDLE;
         getSignalProcessing(context);
     }
@@ -75,7 +75,7 @@ public class GaitSignalProcessing {
         // The connection will continue in the onClientRegistered callback
         return true;
     }
-    private boolean registerApp(SignalProcessingCallback callback,Handler handler) {
+    private boolean registerApp(GaitCallback callback,Handler handler) {
         Log.d(TAG,"registerApp to SignalProcessing");
 
         if(mService==null) return false;
