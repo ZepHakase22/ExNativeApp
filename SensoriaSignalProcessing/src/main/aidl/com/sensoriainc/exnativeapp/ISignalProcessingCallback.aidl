@@ -1,5 +1,5 @@
 // ISignalProcessingCallback.aidl
-package com.sensoriainc.exnativeapp;
+package com.sensoriainc.sensoriasignalprocessing;
 
 // Declare any non-default types here with import statements
 

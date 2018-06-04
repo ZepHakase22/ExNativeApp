@@ -1,5 +1,5 @@
 // ISignalProcessing.aidl
-package com.sensoriainc.exnativeapp;
+package com.sensoriainc.sensoriasignalprocessing;
 
 // Declare any non-default types here with import statements
 
@@ -7,7 +7,7 @@ import android.os.ParcelUuid;
 import com.sensoriainc.exnativeapp.ISignalProcessingCallback;
 import com.sensoriainc.exnativeapp.ISignalProcessingServerCallback;
 
-interface ISignalProcessing {
+interface IGaitSignalProcessing {
 
     void registerClient(in ParcelUuid uuid,in ISignalProcessingCallback callback);
     void unregisterClient(in int clientIf);

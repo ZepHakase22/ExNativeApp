@@ -1,4 +1,4 @@
-package com.sensoriainc.exnativeapp;
+package com.sensoriainc.sensoriasignalprocessing;
 
 import android.app.Service;
 import android.content.Intent;
@@ -6,7 +6,7 @@ import android.content.pm.PackageManager;
 import android.os.IBinder;
 import android.util.Log;
 
-public abstract class GenericService extends Service {
+public abstract class SignalProcessingService extends Service {
     private static final String TAG = "GenericService";
     protected boolean mStartError=false;
     private boolean mCleaningUp = false;
@@ -34,7 +34,7 @@ public abstract class GenericService extends Service {
         return !mStartError && !mCleaningUp;
     }
 
-    protected GenericService() {
+    protected SignalProcessingService() {
         mName=getName();
     }
 

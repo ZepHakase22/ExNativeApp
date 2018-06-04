@@ -1,4 +1,4 @@
-package com.sensoriainc.exnativeapp;
+package com.sensoriainc.sensoriasignalprocessing;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -12,15 +12,15 @@ import android.util.Log;
 
 import java.util.UUID;
 
-public class SignalProcessing {
+public class GaitSignalProcessing {
     private static final String TAG="SignalProcessing";
     private int mConnState;
     private final Object mStateLock = new Object();
-    private SignalProcessingCallback mCallback;
+    private GaitCallback mCallback;
     private Handler mHandler;
     private int mClientIf;
 
-    private ISignalProcessing mService;
+    private IGaitSignalProcessing mService;
 
     private static final int CONN_STATE_IDLE = 0;
     private static final int CONN_STATE_CONNECTING = 1;
@@ -39,7 +39,7 @@ public class SignalProcessing {
         ServiceConnection mServiceConnection=new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName name, IBinder service) {
-                mService=ISignalProcessing.Stub.asInterface(service);
+                mService=IGaitSignalProcessing.Stub.asInterface(service);
             }
 
             @Override
@@ -54,7 +54,7 @@ public class SignalProcessing {
         mConnState = CONN_STATE_IDLE;
         getSignalProcessing(context);
     }
-    public boolean connect(SignalProcessingCallback callback, Handler handler) {
+    public boolean connect(GaitCallback callback, Handler handler) {
         Log.d(TAG,"connect() to SignalProcessing");
 
         synchronized(mStateLock) {

@@ -1,4 +1,4 @@
-package com.sensoriainc.exnativeapp;
+package com.sensoriainc.sensoriasignalprocessing;
 
 import android.app.AppOpsManager;
 import android.content.Intent;
@@ -12,11 +12,13 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.sensoriainc.sensoriasignalprocessing.SignalProcessingService;
+
 import java.io.FileDescriptor;
 import java.util.HashMap;
 import java.util.UUID;
 
-public class SignalProcessingService extends GenericService {
+public class GaitService extends SignalProcessingService {
 
     private native void signalProcessingRegisterAppNative(long app_uuid_lsb, long app_uuid_msb);
     private native boolean cleanupNative();

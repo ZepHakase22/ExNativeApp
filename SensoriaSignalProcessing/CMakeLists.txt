@@ -17,7 +17,9 @@ add_library( # Sets the name of the library.
              SHARED
 
              # Provides a relative path to your source file(s).
-             src/main/cpp/Sensoria/SignalProcessing/JNI/Java2SignalProcessingInterface.cpp )
+             src/main/cpp/Sensoria/SignalProcessing/JNI/Java2SignalProcessingInterface.cpp 
+	     src/main/cpp/Sensoria/SignalProcessing/JNI/native-lib.cpp 
+	     src/main/cpp/Sensoria/SignalProcessing/JNI/Utils.cpp )
 
 add_library( # Sets the name of the library.
              SignalProcessing

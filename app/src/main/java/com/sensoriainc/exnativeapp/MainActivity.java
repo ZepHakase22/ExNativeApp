@@ -1,8 +1,6 @@
 package com.sensoriainc.exnativeapp;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -10,10 +8,6 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     private TextView etv;
 
-    // Used to load the 'native-lib' library on application startup.
-    static {
-        System.loadLibrary("native-lib");
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,16 +44,5 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public SignalProcessing connectSignalProcessing(Context context, SignalProcessingCallback callback) {
-        return connectSignalProcessing(context,callback,null);
-    }
 
-    public SignalProcessing connectSignalProcessing(Context context, SignalProcessingCallback callback, Handler handler) {
-        if(callback==null) {
-            throw new NullPointerException("callback is null");
-        }
-        SignalProcessing signalProcessing=new SignalProcessing(context);
-        signalProcessing.connect(callback,handler);
-        return signalProcessing;
-    }
 }

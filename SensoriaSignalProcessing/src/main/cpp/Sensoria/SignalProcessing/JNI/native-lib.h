@@ -3,7 +3,6 @@
 //
 
 #include <jni.h>
-#include "hello.h"
 
 #ifndef EXNATIVEAPP_NATIVE_LIB_H
 #define EXNATIVEAPP_NATIVE_LIB_H
@@ -29,25 +28,8 @@ JNIEXPORT jboolean JNICALL Java_com_sensoriainc_exnativeapp_SignalProcessingServ
 JNIEXPORT void JNICALL Java_com_sensoriainc_exnativeapp_SignalProcessingService_gaitRegisterAppNative(
         JNIEnv *env, jobject instance, jlong app_uuid_lsb, jlong app_uuid_msb);
 
-/**
- * Class:       MainActivity
- * Method:      stringFromJNI
- * Signature:   ()Ljava/lang/String;
- */
-JNIEXPORT jstring JNICALL Java_com_sensoriainc_exnativeapp_MainActivity_stringFromJNI
-        (JNIEnv *, jobject);
 
-/**
- * Class:       MainActivity
- * Method:      setEvent
- * Signature    ()V
- */
-
-JNIEXPORT void JNICALL
-Java_com_sensoriainc_exnativeapp_MainActivity_setEvent
-        (JNIEnv *, jobject);
-
-class EventHandler: public HelloEvents {
+class EventHandler{
 private:
     void setHello(std::string &);
     JNIEnv *m_env;
@@ -56,7 +38,7 @@ private:
     jmethodID m_setHelloMid;
 
 public:
-    Hello *m_objHello;
+//    Hello *m_objHello;
 
     EventHandler();
     EventHandler(JNIEnv *env, jobject obj);
